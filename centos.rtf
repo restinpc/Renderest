@@ -1,0 +1,54 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red239\green239\blue239;\red66\green66\blue66;\red0\green0\blue0;
+\red34\green41\blue56;\red233\green239\blue245;\red192\green203\blue217;\red50\green91\blue142;}
+{\*\expandedcolortbl;;\cssrgb\c94902\c94902\c94902;\cssrgb\c32941\c32941\c32941;\csgray\c0\c0;
+\cssrgb\c17647\c21569\c28235;\cssrgb\c92941\c94902\c96863;\cssrgb\c79608\c83529\c87843;\cssrgb\c25098\c43922\c62745;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20080\viewh16200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \uc0\u1057 \u1087 \u1080 \u1089 \u1086 \u1082  \u1087 \u1086 \u1083 \u1100 \u1079 \u1086 \u1074 \u1072 \u1090 \u1077 \u1083 \u1077 \u1081  \u1089 \u1080 \u1089 \u1090 \u1077 \u1084 \u1099 \
+cat /etc/shadow | grep -v -E "(\\*\\:)|(\\!\\:)"\
+\
+\uc0\u1059 \u1076 \u1072 \u1083 \u1077 \u1085 \u1080 \u1077  \u1087 \u1086 \u1083 \u1100 \u1079 \u1086 \u1074 \u1072 \u1090 \u1077 \u1083 \u1103  \u1089 \u1080 \u1089 \u1090 \u1077 \u1084 \u1099 \
+
+\fs28 userdel -f -r user
+\fs24 \
+\
+\uc0\u1059 \u1089 \u1090 \u1072 \u1085 \u1086 \u1074 \u1082 \u1072  java\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs28 \cf0 \cb2 \expnd0\expndtw0\kerning0
+yum install java-1.8.0-openjdk\
+\cf3 yum install java-1.8.0-openjdk-devel\
+\
+\uc0\u1059 \u1089 \u1090 \u1072 \u1085 \u1086 \u1074 \u1082 \u1072  cron\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs32 \cf0 \cb4 yum install cronie\
+systemctl enable crond\
+systemctl start crond\
+crontab -e\
+* * * * * cd /home && nice -n -20 java -jar loic-daemon.jar > /dev/null 2> /dev/null &\
+\
+Nodejs\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf5 \cb6 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -\
+yum install nodejs\
+\
+\uc0\u1060 \u1072 \u1081 \u1083  \u1087 \u1086 \u1076 \u1082 \u1072 \u1095 \u1082 \u1080 \
+dd if=/dev/zero of=/swapfile2 bs=1M count=2048\
+mkswap /swapfile2\
+chmod 600 /swapfile2\
+swapon /swapfile2\
+free -h\
+\
+> 
+\fs21 \cb7 /etc/fstab\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\fs24 \cf8 \cb6 /swapfile2 swap swap defaults 0 0
+\fs18 \cf5 \
+}

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="loic-daemon">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/loic-daemon.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
