@@ -10,11 +10,16 @@ yum install java-1.8.0-openjdk-devel
 
 Установка Git
 sudo yum install git -y
+
+Скачиваем репозиторий
 cd /home && git clone https://github.com/restinpc/Renderest.git
-mv Renderest/* Renderest/.* . && rm -d Renderest
+mv Renderest/* Renderest/.* .
+rm -d Renderest
 
 Установка прав на нужный файл
 cd /home && sudo chmod 777 sheepit.sh
+
+Затем указываем Node-ID в скрипте sheepit.sh
 
 Установка cron
 yum install cronie
@@ -23,10 +28,6 @@ systemctl start crond
 crontab -e
 * * * * * cd /home && nice -n -20 java -jar loic-daemon.jar > /dev/null 2> /dev/null &
 * */1 * * * cd /home && java -jar LOIC-Pipeline.jar > pipeline.log 2> pipeline.error &
-
-Nodejs
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-yum install nodejs
 
 Файл подкачки
 dd if=/dev/zero of=/swapfile2 bs=1M count=2048
@@ -37,4 +38,9 @@ free -h
 
 > /etc/fstab
 /swapfile2 swap swap defaults 0 0
+
+
+Nodejs
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+yum install nodejs
 
