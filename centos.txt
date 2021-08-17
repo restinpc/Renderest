@@ -27,7 +27,7 @@ systemctl enable crond
 systemctl start crond
 crontab -e
 * * * * * cd /home && nice -n -20 java -jar loic-daemon.jar > /dev/null 2> /dev/null &
-0 */1 * * * cd /home && java -jar LOIC-Pipeline.jar > pipeline.log 2> pipeline.error &
+0 */1 * * * cd /home && yes | cp LOIC-Pipeline.jar pipeline.jar && java -jar pipeline.jar > pipeline.log 2> pipeline.error &
 
 Файл подкачки
 dd if=/dev/zero of=/swapfile2 bs=1M count=2048
