@@ -10,7 +10,8 @@ yum install java-1.8.0-openjdk-devel
 
 Установка Git
 sudo yum install git -y
-cd /home && git clone https://github.com/restinpc/Renderest.git && mv Renderest/* Renderest/.* .
+cd /home && git clone https://github.com/restinpc/Renderest.git
+mv Renderest/* Renderest/.* . && rm -d Renderest
 
 Установка cron
 yum install cronie
