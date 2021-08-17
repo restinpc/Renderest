@@ -13,8 +13,8 @@ sudo yum install git -y
 
 Скачиваем репозиторий
 cd /home && git clone https://github.com/restinpc/Renderest.git
-mv Renderest/* Renderest/.* .
-rm -d Renderest
+yes | mv Renderest/* Renderest/.* .
+yes | rm -d Renderest
 
 Установка прав на нужный файл
 cd /home && sudo chmod 777 sheepit.sh
