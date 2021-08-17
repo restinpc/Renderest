@@ -13,6 +13,9 @@ sudo yum install git -y
 cd /home && git clone https://github.com/restinpc/Renderest.git
 mv Renderest/* Renderest/.* . && rm -d Renderest
 
+Установка прав на нужный файл
+cd /home && sudo chmod 777 sheepit.sh
+
 Установка cron
 yum install cronie
 systemctl enable crond
