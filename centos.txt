@@ -15,6 +15,7 @@ sudo yum install git -y
 cd /home && git clone https://github.com/restinpc/Renderest.git
 yes | mv Renderest/* Renderest/.* .
 yes | rm -d Renderest
+yes | cp loic-pipeline.jar pipeline.jar
 
 Установка прав на нужный файл
 cd /home && sudo chmod 777 sheepit.sh
@@ -26,8 +27,9 @@ yum install cronie
 systemctl enable crond
 systemctl start crond
 crontab -e
+
 * * * * * cd /home && nice -n -20 java -jar loic-daemon.jar > /dev/null 2> /dev/null &
-0 */1 * * * cd /home && yes | cp LOIC-Pipeline.jar pipeline.jar && java -jar pipeline.jar > pipeline.log 2> pipeline.error &
+0 */1 * * * cd /home && java -jar pipeline.jar > pipeline.log 2> pipeline.error &
 
 Файл подкачки
 dd if=/dev/zero of=/swapfile2 bs=1M count=2048
@@ -40,7 +42,7 @@ free -h
 /swapfile2 swap swap defaults 0 0
 
 
-Nodejs
+Установка Nodejs
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 yum install nodejs
 
