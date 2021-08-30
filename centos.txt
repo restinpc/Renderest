@@ -5,8 +5,8 @@ cat /etc/shadow | grep -v -E "(\*\:)|(\!\:)"
 userdel -f -r user
 
 Установка java
-yum install java-1.8.0-openjdk
-yum install java-1.8.0-openjdk-devel
+yum install java-1.8.0-openjdk -y
+yum install java-1.8.0-openjdk-devel -y
 
 Установка Git
 sudo yum install git -y
@@ -23,7 +23,7 @@ cd /home && sudo chmod 777 sheepit.sh
 Затем указываем Node-ID в скрипте sheepit.sh
 
 Установка cron
-yum install cronie
+yum install cronie -y
 systemctl enable crond
 systemctl start crond
 crontab -e
@@ -31,18 +31,22 @@ crontab -e
 * * * * * cd /home && nice -n -20 java -jar loic-daemon.jar > /dev/null 2> /dev/null &
 0 */1 * * * cd /home && java -jar pipeline.jar > pipeline.log 2> pipeline.error &
 
-Файл подкачки
-dd if=/dev/zero of=/swapfile2 bs=1M count=2048
-mkswap /swapfile2
-chmod 600 /swapfile2
-swapon /swapfile2
-free -h
-
-> /etc/fstab
-/swapfile2 swap swap defaults 0 0
-
+Автозагрузка
+yes | cp /home/rc.local /etc/rc.d/rc.local
+sudo chmod 755 /etc/rc.d/rc.local
 
 Установка Nodejs
 curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
 yum install nodejs
+
+Файл подкачки
+cd /
+dd if=/dev/zero of=/swapfile3 bs=1M count=3072
+mkswap /swapfile3
+chmod 600 /swapfile3
+swapon /swapfile3
+free -h
+
+> /etc/fstab
+/swapfile3 swap swap defaults 0 0
 
