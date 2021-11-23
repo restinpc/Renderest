@@ -4,9 +4,14 @@ cat /etc/shadow | grep -v -E "(\*\:)|(\!\:)"
 Удаление пользователя системы
 userdel -f -r user
 
-Установка java
+Java 8
 yum install java-1.8.0-openjdk -y
 yum install java-1.8.0-openjdk-devel -y
+
+Java 11
+sudo yum install java-11-openjdk -y
+sudo yum install java-11-openjdk-devel -y
+sudo update-alternatives --config java
 
 Установка Git
 sudo yum install git -y
