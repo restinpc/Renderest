@@ -1,1 +1,1 @@
-java -jar sheepit-client.jar -ui text -login restinpc -password HWzpssaY8dEjAKW -priority 19 -hostname Node_x > /dev/null 2> sheepit.error &
+echo Node_x > /dev/null 2> /dev/null
