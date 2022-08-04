@@ -55,3 +55,24 @@ free -h
 > /etc/fstab
 /swapfile3 swap swap defaults 0 0
 
+OpenVPN
+yum -y install https://as-repository.openvpn.net/as-repo-centos7.rpm
+yum -y install openvpn-as
+...
+Client UI: https://2.2.2.2:943/ -> New profile without TSL
+-----
+<auth-user-pass>
+openvpn
+...
+</auth-user-pass>
+verb 3
+push-peer-info
+dhcp-option DNS 8.8.8.8
+dhcp-option DNS 8.8.4.4
+pull-filter ignore "dhcp-pre-release"
+pull-filter ignore "block-outside-dns"
+pull-filter ignore "dhcp-renew"
+pull-filter ignore "dhcp-release"
+pull-filter ignore "register-dns"
+pull-filter ignore "block-ipv6"
+-----

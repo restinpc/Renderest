@@ -1,1 +1,1 @@
-echo Node_x > /dev/null 2> /dev/null
+echo Idle > /dev/null 2> /dev/null
